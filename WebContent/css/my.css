@@ -1,0 +1,27 @@
+.head_font{
+	font-family:"Î¢ÈíÑÅºÚ";
+	font-size:9pt;
+}
+.title_font{
+	font-family:"Î¢ÈíÑÅºÚ";
+	font-size:9pt;
+}
+.left_font{
+	font-family:"Î¢ÈíÑÅºÚ";
+	font-size:10pt;
+}
+.right_font{
+    font-weight:bold;
+    padding:6px 0px;    
+    color:#3d580b;    
+    font-size:15px;
+}
+.tail_font{
+	font-family:"Î¢ÈíÑÅºÚ";
+	font-size:8pt;
+}
+TABLE.Listing TD {
+    font-family:"Î¢ÈíÑÅºÚ";
+	font-size:10pt;
+	align:center;
+}
