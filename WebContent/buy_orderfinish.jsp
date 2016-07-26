@@ -20,12 +20,63 @@ User u=(User)request.getAttribute("user");
 <title>Insert title here</title>
 <link type="text/css" rel="stylesheet" href="css/my.css" />
 <script type="text/javascript">
-
+function closeit()
+{
+setTimeout("self.close()",10000) //毫秒
+}
 
 </script>
+<script type="text/javascript" LANGUAGE="JavaScript">
+
+function del(){
+	if(confirm("真的要删除该条记录吗?")){
+	return true;
+	}else{
+	return false;
+	}
+	}
+
+function openwin() {
+//window.open ("page.html", "newwindow", "height=100, width=100, top=0, left=0,toolbar=no, menubar=no, scrollbars=no, resizable=no, location=n o, status=no")//写成一行
+//window.open ("page2.html", "newwindow2", "height=100, width=100, top=1 00, left=100,toolbar=no, menubar=no, scrollbars=no, resizable=no, loca tion=no, status=no")//写成一行
+//window.open("page.html","","width=200,height=200")
+
+OpenWindow=window.open("", "newwin", "height=250, width=250,toolbar=no ,scrollbars="+scroll+",menubar=no");
+//写成一行
+OpenWindow.document.write("<TITLE>例子</TITLE>")
+OpenWindow.document.write("<BODY BGCOLOR=#ffffff>")
+OpenWindow.document.write("<h1>提示信息！</h1>")
+OpenWindow.document.write("支付功能尚未实现！")
+OpenWindow.document.write("</BODY>")
+OpenWindow.document.write("</HTML>")
+OpenWindow.document.close()
+}
+function get_cookie(Name) {
+	var search = Name + "="
+	var returnvalue = "";
+	if (document.cookie.length > 0) {
+	offset = document.cookie.indexOf(search)
+	if (offset != -1) {
+	offset += search.length
+	end = document.cookie.indexOf(";", offset);
+	if (end == -1)
+	end = document.cookie.length;
+	returnvalue=unescape(document.cookie.substring(offset, end))
+	}
+	}
+	return returnvalue;
+	} 　
+	function loadpopup(){
+	if (get_cookie('popped')==''){
+	openwin()
+	document.cookie="popped=yes"
+	
+	}
+	}
+	</script>
 
 </head>
-<body topmargin="0">
+<body topmargin="0" onload="loadpopup()">
 	<div align="center">
 		<table align="center" width=80% border="1" cellspacing="0"
 			cellpadding="0" class="Listing">
@@ -71,7 +122,23 @@ User u=(User)request.getAttribute("user");
 							<td align="center"><%=u.getName()%> </td>
 							<td align="center"> <%=u.getEmail()%> </td>
 							
-							<td align="center" width=9%><a href="upload?m=show_view&id=<%=u.getId() %>">查看邮箱</a></td> 
+							<td align="center" width=9%>
+							<!--<form action="UserServlet" method="post">
+								<input type="hidden" name="m" value="buy_order" >
+								<input type="hidden" name="email" value="<%=u.getEmail() %>">
+								 <input type="submit"  value="下一步">
+								</form>
+							
+							
+							-->
+							<!--<a href="upload?m=show_view&id=<%=u.getId() %>">确认支付</a>
+							
+							
+							-->
+							<a href="#" onclick="openwin()">确认支付</a>
+							<a href="#" onclick="return del()">取消订单</a>
+							
+							</td> 
 						</tr>
 								</table>
 							</fieldset>

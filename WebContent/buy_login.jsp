@@ -19,6 +19,28 @@ function delAll(){
 /*  function update(){
 	window.open("shoppingServlet?m=updateGoods","_self");
 }  */
+
+function check(form){
+  var userName = form["email"];//得到input
+  if(test(userName) === false){//这里执行验证
+    alert("请输入email");
+    return false;
+  }
+  var passWord = form["password"];//得到input
+  if(test(passWord) === false){//这里执行验证
+    alert("请输入密码");
+    return false;
+  }
+}
+//验证方法，验证不通过则返回false，否则返回true
+function test(input){
+  var val = input.value;
+  if( val == "" || !val  ){//不能为空
+  return false;
+  }
+  return true;
+}
+
 </script>
 
 </head>
@@ -39,7 +61,7 @@ function delAll(){
 					</tr>
 			</table>
 			<div align="center" >
-						<form action="UserServlet" method="post" onsubmit="return J(f);">
+						<form action="UserServlet" method="post" onsubmit="return check(this)">
 							<input type="hidden" name="m" value="login">
 							<fieldset>
 								<legend>login</legend>
